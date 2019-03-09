@@ -126,6 +126,16 @@ class App extends Component {
     
   }
 
+  isPickEmpty() {
+    if(this.state.judge && this.state.judge.label !== 'כלום' ) {
+      return false;
+    }
+    if(this.state.authorny && this.state.authorny.label !== 'כלום' ) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     return (
       <div className="App">
@@ -139,7 +149,7 @@ class App extends Component {
 
         <div className="visualization-section" style={{width: '1000px', left: 'calc(50% - 500px)'}}>
           <TabMenu model={this.tabs} activeItem={this.state.tab} onTabChange={(e) => this.setState({tab: e.value})} style={{width: '1000px', float: 'right !important'}}/>
-          {(this.state.judge === this.state.authorny === {label: 'כלום', value: 'כלום'}) ? '' : this.currentTab()}
+          {this.isPickEmpty() ? '' : this.currentTab()}
         </div>
       </div>
     );
