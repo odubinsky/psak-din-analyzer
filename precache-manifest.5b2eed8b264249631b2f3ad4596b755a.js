@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "c045b73d86803686f4cd1cc3f9ceba59",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.c045b73d.ttf"
+    "revision": "148a6749baa5f658a45183ddb5ee159f",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.148a6749.eot"
   },
   {
     "revision": "0bc8f6340ed9d050b206",
@@ -20,6 +20,14 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/js/2.9f76c8f3.chunk.js"
   },
   {
+    "revision": "521d17bc9f3526c690e8ada6eee55bec",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.521d17bc.woff"
+  },
+  {
+    "revision": "177cc92d2e8027712a8c1724abd272cd",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.177cc92d.ttf"
+  },
+  {
     "revision": "76b56857ebbae3a5a689f213feb11af0",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.76b56857.eot"
   },
@@ -28,8 +36,8 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.60c86674.woff2"
   },
   {
-    "revision": "521d17bc9f3526c690e8ada6eee55bec",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.521d17bc.woff"
+    "revision": "27ef0b062b2e221df16f3bbd97c2dca8",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.27ef0b06.svg"
   },
   {
     "revision": "9dce7f01715340861bdb57318e2f3fdc",
@@ -44,36 +52,28 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.bf2d0783.woff"
   },
   {
-    "revision": "177cc92d2e8027712a8c1724abd272cd",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.177cc92d.ttf"
-  },
-  {
-    "revision": "27ef0b062b2e221df16f3bbd97c2dca8",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.27ef0b06.svg"
-  },
-  {
     "revision": "0bc8f6340ed9d050b206",
     "url": "/psak-din-analyzer/static/js/main.0bc8f634.chunk.js"
-  },
-  {
-    "revision": "7aab4c13671282c90669eb6a10357e41",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.7aab4c13.svg"
-  },
-  {
-    "revision": "148a6749baa5f658a45183ddb5ee159f",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.148a6749.eot"
   },
   {
     "revision": "623e3205570002af47fc2b88f9335d19",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.623e3205.woff"
   },
   {
-    "revision": "d08c09f2f169f4a6edbcf8b8d1636cb4",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.d08c09f2.woff2"
+    "revision": "c045b73d86803686f4cd1cc3f9ceba59",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.c045b73d.ttf"
+  },
+  {
+    "revision": "7aab4c13671282c90669eb6a10357e41",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.7aab4c13.svg"
   },
   {
     "revision": "7e08cc656863d52bcb5cd34805ac605b",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.7e08cc65.ttf"
+  },
+  {
+    "revision": "d08c09f2f169f4a6edbcf8b8d1636cb4",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.d08c09f2.woff2"
   },
   {
     "revision": "2e00b2635b51ba336b4b67a5d0bc03c7",
@@ -92,19 +92,19 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/primeicons.b8eccb10.eot"
   },
   {
-    "revision": "71bb3d79dcf18b45ae845409e7c2ada3",
-    "url": "/psak-din-analyzer/static/media/primeicons.71bb3d79.woff"
-  },
-  {
     "revision": "473e2a746d3c151d7dcaa626a7c84c60",
     "url": "/psak-din-analyzer/static/media/primeicons.473e2a74.ttf"
+  },
+  {
+    "revision": "71bb3d79dcf18b45ae845409e7c2ada3",
+    "url": "/psak-din-analyzer/static/media/primeicons.71bb3d79.woff"
   },
   {
     "revision": "9f76c8f3684ac0efa2c5",
     "url": "/psak-din-analyzer/static/css/2.39e276ef.chunk.css"
   },
   {
-    "revision": "d2ac11b3cc6d8eac9d81c7c2b7f9438f",
+    "revision": "e25c2f10043f0be3c8c7181b4677c3cf",
     "url": "/psak-din-analyzer/index.html"
   }
 ];
