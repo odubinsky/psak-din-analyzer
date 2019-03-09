@@ -7,11 +7,11 @@ import 'primeicons/primeicons.css';
 import {Dropdown} from 'primereact/dropdown';
 import {Chart} from 'primereact/chart';
 import {TabMenu} from 'primereact/tabmenu';
-
-import _ from 'lodash'
-
 import judges from './judges'
 import authornies from './authornies'
+import {DataTable} from 'primereact/datatable';
+import {Column} from 'primereact/column';
+
 
 
 class App extends Component {
@@ -27,8 +27,11 @@ class App extends Component {
     };
     this.judges = judges;
     this.authornies = authornies;
+    this.judgesArr = Object.entries(judges).sort((a,b) => a[1]['accepted_ratio: ']  > b[1]['accepted_ratio: '] ? 1 : -1).slice(-10);
+    this.judgesArr = this.judgesArr.map(this.mapToTable);
+    this.authorniesArr = Object.entries(authornies).sort((a,b) => a[1]['accepted_ratio: ']  > b[1]['accepted_ratio: '] ? 1 : -1).slice(-10);
+    this.authorniesArr = this.authorniesArr.map(this.mapToTable)
     this.tabs = [{label : 'כלום'},{label : 'עמודות'},{label : 'עיגול'},{label : 'פסקי דין'},{label : 'שופטים מומלצים'},{label : 'עו״ד מומלצים'}];
-
     this.judgesKeys = [];
     this.authorniesKeys = [];
 
@@ -57,6 +60,11 @@ class App extends Component {
 
   onTabChange(e) {
     this.setState({tab: e.value})
+  }
+
+  mapToTable(entry){
+    entry[1].name = entry[0];
+    return entry[1];
   }
 
   currentTab() {
@@ -92,14 +100,14 @@ class App extends Component {
       const chosenAuthornyRatios = this.authornies[`${this.state.authorny}`]
       let chartObjJudge, chartObjAuth;
       chartObjJudge = {
-        labels: ['אחוזי הצלחה','אחוזי דחייה','אחר'],
+        labels: ['אחוזי קבלה','אחוזי דחייה','אחר'],
         datasets: [{
           backgroundColor: ['#42A5F5','#9CCC65','red'],
           data: []
         }]
       }
       chartObjAuth  = {
-        labels: ['אחוזי הצלחה','אחוזי דחייה','אחר'],
+        labels: ['אחוזי קבלה','אחוזי דחייה','אחר'],
         datasets: [{
           backgroundColor: ['#42A5F5','#9CCC65','red'],
           data: []
@@ -123,7 +131,20 @@ class App extends Component {
         <Chart type="doughnut" data={chartObjAuth} style={{width: '50%', left: '50%', position: 'absolute'}} />
       </div>)
     }
-    
+    if(this.state.tab.label ===  'עו״ד מומלצים') {
+      return (<DataTable value={this.authorniesArr}>
+        <Column field="rejected_ratio: " header="Rejected Ratio" />
+        <Column field="accepted_ratio: " header="Accepted Ratio" />
+        <Column field="name" header="שם" />
+      </DataTable>)
+    }
+    if(this.state.tab.label ===  'שופטים מומלצים') {
+      return (<DataTable value={this.judgesArr}>
+        <Column field="rejected_ratio: " header="אחוז דחייה" />
+        <Column field="accepted_ratio: " header="אחוז קבלה" />
+        <Column field="name" header="שם" />
+      </DataTable>)
+    }
   }
 
   isPickEmpty() {
@@ -131,6 +152,9 @@ class App extends Component {
       return false;
     }
     if(this.state.authorny && this.state.authorny.label !== 'כלום' ) {
+      return false;
+    }
+    if(this.state.tab.label === 'שופטים מומלצים' || this.state.tab.label === 'עו״ד מומלצים'){
       return false;
     }
     return true;
