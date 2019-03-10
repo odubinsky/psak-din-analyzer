@@ -74,7 +74,7 @@ class Visualization extends Component {
       </div>)
     }
     if(tab ===  'שופטים מומלצים') {
-      return (<DataTable value={judgesArr} header={'שופטים שמקבלים את התביעה'}>
+      return (<DataTable value={judgesArr} header={'שופטים שמקבלים את התביעה'} style={{marginBottom: '30px'}}>
         <Column field="rejected_ratio" header="אחוז דחייה" sortable={true}/>
         <Column field="accepted_ratio" header="אחוז קבלה" sortable={true}/>
         <Column field="name" header="שם" />
