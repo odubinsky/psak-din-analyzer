@@ -48,7 +48,13 @@ class Visualization extends Component {
         chartObj.datasets[0].data.push(chosenJudgeRatios['accepted_ratio: '] * 100);
         chartObj.datasets[1].data.push(chosenJudgeRatios['rejected_ratio: '] * 100);
       }
-      return <Chart type="bar" data={chartObj} style={{width: '500px', left: 'calc(50% - 250px)', top: '20px'}} />
+      return (<div>
+        <Chart type="bar" data={chartObj} style={{width: '500px', left: 'calc(50% - 250px)', top: '20px'}} />
+        <div>
+          <div  style={{width: '300px', left: 'calc(50% - 150px)', fontSize: '12px',color: 'white', top:'20px', position: 'relative'}}>{`אחוזי קבלה: ${chartObj.datasets[0].data[0]}`}</div>
+          <div  style={{width: '300px', left: 'calc(50% - 150px)', fontSize: '12px',color: 'white', marginBottom: '20px', position:'relative',top: '20px'}}> {`אחוזי דחייה: ${chartObj.datasets[1].data[0]}`}</div>
+        </div>
+      </div>)
     }
     if(tab === 'עיגול'){
       const chosenJudgeRatios = judges[`${chosenJudge}`]
@@ -70,7 +76,11 @@ class Visualization extends Component {
      
       return (
       <div style={{top: '40px', position: 'relative'}}>
-        <Chart type="doughnut" data={chartObjJudge} style={{width: '50%', left: 'calc(50% - 250px)', marginBottom: '20px'}} />
+        <Chart type="doughnut" data={chartObjJudge} style={{width: '50%', left: 'calc(50% - 250px)', position: 'relative'}} />
+        <div>
+          <div  style={{width: '300px', left: 'calc(50% - 150px)', fontSize: '12px',color: 'white', top:'20px', position: 'relative'}}>{`אחוזי קבלה: ${chartObjJudge.datasets[0].data[0]}`}</div>
+          <div  style={{width: '300px', left: 'calc(50% - 150px)', fontSize: '12px',color: 'white', marginBottom: '20px', position:'relative',top: '20px'}}> {`אחוזי דחייה: ${chartObjJudge.datasets[0].data[1]}`}</div>
+        </div>
       </div>)
     }
     if(tab ===  'שופטים מומלצים') {

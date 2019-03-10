@@ -90,6 +90,11 @@ class App extends Component {
         this.judges[lastJudge].links.push(link);
       } else if(line.match(/^[01]/)) {
         if(!isAcceptedRatio) {
+          if(lastAccepted.length > 6) {
+            lastAccepted = lastAccepted.slice(0,6);
+            line = (1 - Number(lastAccepted)).toString().slice(0,6);
+          }
+          
           this.judges[lastJudge] = {
             'accepted_ratio: ': lastAccepted,
             'rejected_ratio: ': line,
@@ -110,12 +115,18 @@ class App extends Component {
 
   returnAvg() {
     const total = Number(this.state.globalRatios.accpeted) + Number(this.state.globalRatios.rejected)
-    const accepted_ratio = Number(this.state.globalRatios.accpeted)/total;
-    const rejected_ratio = Number(this.state.globalRatios.rejected)/total;
+    let accepted_ratio = Number(this.state.globalRatios.accpeted)/total * 100 ;
+    let rejected_ratio = Number(this.state.globalRatios.rejected)/total * 100;
+    if(accepted_ratio.toString().length > 6) {
+      accepted_ratio = accepted_ratio.toString().slice(0,6);
+      rejected_ratio = 100 - accepted_ratio;
+    }
+
+
     return (<div>
       <div style={{direction: 'rtl'}}>{'ממוצע קבלה ודחייה אצל שופטים:'}</div>
-      <div>{`אחוז קבלה: ${accepted_ratio * 100}`}</div>
-      <div>{`אחוז דחייה: ${rejected_ratio * 100}`}</div>
+      <div>{`אחוז קבלה: ${accepted_ratio}`}</div>
+      <div>{`אחוז דחייה: ${rejected_ratio}`}</div>
     </div>)
   }
 
