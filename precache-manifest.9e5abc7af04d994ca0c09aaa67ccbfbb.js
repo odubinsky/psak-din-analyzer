@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "bf2d0783515b7d75c35bde69e01b3135",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.bf2d0783.woff"
+    "revision": "27ef0b062b2e221df16f3bbd97c2dca8",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.27ef0b06.svg"
   },
   {
-    "revision": "83936c8dc2d2bde09615",
+    "revision": "069ad30d448a6efbc5b5",
     "url": "/psak-din-analyzer/static/css/main.0c0bc06c.chunk.css"
   },
   {
@@ -20,24 +20,16 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/js/2.c1ca5f5a.chunk.js"
   },
   {
-    "revision": "76b56857ebbae3a5a689f213feb11af0",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.76b56857.eot"
-  },
-  {
     "revision": "60c866748ff15f5b347fdba64596b1b1",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.60c86674.woff2"
   },
   {
-    "revision": "521d17bc9f3526c690e8ada6eee55bec",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.521d17bc.woff"
+    "revision": "76b56857ebbae3a5a689f213feb11af0",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.76b56857.eot"
   },
   {
     "revision": "177cc92d2e8027712a8c1724abd272cd",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.177cc92d.ttf"
-  },
-  {
-    "revision": "27ef0b062b2e221df16f3bbd97c2dca8",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.27ef0b06.svg"
   },
   {
     "revision": "9dce7f01715340861bdb57318e2f3fdc",
@@ -48,24 +40,32 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.cffb686d.woff2"
   },
   {
+    "revision": "bf2d0783515b7d75c35bde69e01b3135",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.bf2d0783.woff"
+  },
+  {
+    "revision": "521d17bc9f3526c690e8ada6eee55bec",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-300.521d17bc.woff"
+  },
+  {
     "revision": "c045b73d86803686f4cd1cc3f9ceba59",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.c045b73d.ttf"
   },
   {
-    "revision": "83936c8dc2d2bde09615",
-    "url": "/psak-din-analyzer/static/js/main.83936c8d.chunk.js"
+    "revision": "069ad30d448a6efbc5b5",
+    "url": "/psak-din-analyzer/static/js/main.069ad30d.chunk.js"
   },
   {
-    "revision": "148a6749baa5f658a45183ddb5ee159f",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.148a6749.eot"
+    "revision": "7aab4c13671282c90669eb6a10357e41",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.7aab4c13.svg"
   },
   {
     "revision": "d08c09f2f169f4a6edbcf8b8d1636cb4",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.d08c09f2.woff2"
   },
   {
-    "revision": "7aab4c13671282c90669eb6a10357e41",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.7aab4c13.svg"
+    "revision": "148a6749baa5f658a45183ddb5ee159f",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.148a6749.eot"
   },
   {
     "revision": "623e3205570002af47fc2b88f9335d19",
@@ -92,19 +92,19 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/primeicons.b8eccb10.eot"
   },
   {
-    "revision": "71bb3d79dcf18b45ae845409e7c2ada3",
-    "url": "/psak-din-analyzer/static/media/primeicons.71bb3d79.woff"
-  },
-  {
     "revision": "473e2a746d3c151d7dcaa626a7c84c60",
     "url": "/psak-din-analyzer/static/media/primeicons.473e2a74.ttf"
+  },
+  {
+    "revision": "71bb3d79dcf18b45ae845409e7c2ada3",
+    "url": "/psak-din-analyzer/static/media/primeicons.71bb3d79.woff"
   },
   {
     "revision": "c1ca5f5af0f3eeefaf7e",
     "url": "/psak-din-analyzer/static/css/2.803c4049.chunk.css"
   },
   {
-    "revision": "ee60316ced6578cb2922fc8ff3542ffe",
+    "revision": "c0218580fa492c9e81ff5feb11cf95b5",
     "url": "/psak-din-analyzer/index.html"
   }
 ];

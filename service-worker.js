@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/psak-din-analyzer/precache-manifest.f5fe324061fb3461818f872ad8fafa96.js"
+  "/psak-din-analyzer/precache-manifest.9e5abc7af04d994ca0c09aaa67ccbfbb.js"
 );
 
 workbox.clientsClaim();
