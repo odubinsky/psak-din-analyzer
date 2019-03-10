@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.c045b73d.ttf"
   },
   {
-    "revision": "1933a96dc280c7f79721",
+    "revision": "a1d7f1494713e6003f0f",
     "url": "/psak-din-analyzer/static/css/main.9491a6e5.chunk.css"
   },
   {
@@ -52,8 +52,8 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.bf2d0783.woff"
   },
   {
-    "revision": "1933a96dc280c7f79721",
-    "url": "/psak-din-analyzer/static/js/main.1933a96d.chunk.js"
+    "revision": "a1d7f1494713e6003f0f",
+    "url": "/psak-din-analyzer/static/js/main.a1d7f149.chunk.js"
   },
   {
     "revision": "148a6749baa5f658a45183ddb5ee159f",
@@ -104,7 +104,7 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/css/2.803c4049.chunk.css"
   },
   {
-    "revision": "942e2bcc33cc723f4c5a888b26c1d457",
+    "revision": "3bfe88aa7c9b554cfab9e196531040bf",
     "url": "/psak-din-analyzer/index.html"
   }
 ];
