@@ -48,7 +48,7 @@ class Visualization extends Component {
         chartObj.datasets[0].data.push(chosenJudgeRatios['accepted_ratio: '] * 100);
         chartObj.datasets[1].data.push(chosenJudgeRatios['rejected_ratio: '] * 100);
       }
-      return <Chart type="bar" data={chartObj} style={{width: '600px', left: 'calc(50% - 300px)', top: '20px'}} />
+      return <Chart type="bar" data={chartObj} style={{width: '500px', left: 'calc(50% - 250px)', top: '20px'}} />
     }
     if(tab === 'עיגול'){
       const chosenJudgeRatios = judges[`${chosenJudge}`]
