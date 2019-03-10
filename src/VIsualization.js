@@ -86,7 +86,7 @@ class Visualization extends Component {
         entry = entry[0].split('\t')
         return {
           link: entry[0],
-          result: entry[1] ? 'התקבל' : 'נדחה'
+          result: entry[1] ? 'נדחה' : 'התקבל'
         }
       });
       return (<DataTable value={linksArr} style={{marginBottom: '30px'}}>
