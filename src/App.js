@@ -41,7 +41,7 @@ class App extends Component {
 
   createDropdownLists() {
     for (var j in this.judges) {
-      if(this.judges[j]['accepted_ratio: '] > 0 ){
+      if(!(j.match(/^.\s+/g)) && this.judges[j]['accepted_ratio: '] > 0 ){
         this.judgesKeys.push({label: j, value: j});
       }
     };

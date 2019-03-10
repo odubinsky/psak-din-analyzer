@@ -45,8 +45,8 @@
   top: 180px;
 }
 
-.p-dropdown-label, .p-dropdown-items{
-  direction: rtl
+.p-dropdown-label, .p-dropdown-items, .p-dropdown-list{
+  direction: rtl;
 }
 
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem {
