@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.c045b73d.ttf"
   },
   {
-    "revision": "a1d7f1494713e6003f0f",
-    "url": "/psak-din-analyzer/static/css/main.9491a6e5.chunk.css"
+    "revision": "f27918badac7d30406f7",
+    "url": "/psak-din-analyzer/static/css/main.0c0bc06c.chunk.css"
   },
   {
     "revision": "c40a4c44da759c90d74e",
@@ -52,16 +52,16 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.bf2d0783.woff"
   },
   {
-    "revision": "a1d7f1494713e6003f0f",
-    "url": "/psak-din-analyzer/static/js/main.a1d7f149.chunk.js"
-  },
-  {
-    "revision": "148a6749baa5f658a45183ddb5ee159f",
-    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.148a6749.eot"
+    "revision": "f27918badac7d30406f7",
+    "url": "/psak-din-analyzer/static/js/main.f27918ba.chunk.js"
   },
   {
     "revision": "7aab4c13671282c90669eb6a10357e41",
     "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-regular.7aab4c13.svg"
+  },
+  {
+    "revision": "148a6749baa5f658a45183ddb5ee159f",
+    "url": "/psak-din-analyzer/static/media/open-sans-v15-latin-700.148a6749.eot"
   },
   {
     "revision": "d08c09f2f169f4a6edbcf8b8d1636cb4",
@@ -104,7 +104,7 @@ self.__precacheManifest = [
     "url": "/psak-din-analyzer/static/css/2.803c4049.chunk.css"
   },
   {
-    "revision": "3bfe88aa7c9b554cfab9e196531040bf",
+    "revision": "6a5a84d0d50e6d593c12b52a63fde74a",
     "url": "/psak-din-analyzer/index.html"
   }
 ];
