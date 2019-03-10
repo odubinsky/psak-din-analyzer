@@ -6,9 +6,10 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import {Dropdown} from 'primereact/dropdown';
 import {TabMenu} from 'primereact/tabmenu';
-import judges from './judges'
-import lawyers from './lawyers'
 import Visualization from './VIsualization.js'
+// import txt from './judges.txt'
+import $ from 'jquery'
+// const text = require('fs').readFileSync(__dirname + '/judges.txt', 'utf8')
 
 class App extends Component {
   constructor() {
@@ -16,29 +17,32 @@ class App extends Component {
     this.state = {
         judge: {label: 'כלום', value: 'כלום'}, 
         lawyer: {label: 'כלום', value: 'כלום'},
-        tab: {label: 'כלום'}
+        tab: {label: 'כלום'},
+        dataLoaded: false,
+        globalRatios: {}
     };
-    this.judges = judges;
-    this.lawyers = lawyers;
-    this.judgesArr = Object.entries(judges).sort((a,b) => a[1]['accepted_ratio: ']  > b[1]['accepted_ratio: '] ? 1 : -1).slice(-10).map(this.mapToTable);
-    this.lawyersArr = Object.entries(lawyers).sort((a,b) => a[1]['accepted_ratio: ']  > b[1]['accepted_ratio: '] ? 1 : -1).slice(-10).map(this.mapToTable);
-    this.tabs = [{label : 'כלום'},{label : 'עמודות'},{label : 'עיגול'},{label : 'פסקי דין'},{label : 'שופטים מומלצים'},{label : 'עו״ד מומלצים'}];
+    this.parseText = this.parseText.bind(this);
+    this.parseGlobal = this.parseGlobal.bind(this);
+    this.returnAvg = this.returnAvg.bind(this);
+    this.createDropdownLists = this.createDropdownLists.bind(this);
+    const judgesPath = window.document.documentURI + '/judges.txt'
+    const globalPath = window.document.documentURI + '/global.txt'
+    $.get( judgesPath, this.parseText )
+    $.get( globalPath, this.parseGlobal )
+    
+    this.judges = {}
+    this.tabs = [{label : 'עמודות'},{label : 'עיגול'},{label : 'פסקי דין'},{label : 'שופטים מומלצים'}];
     this.judgesKeys = [];
     this.lawyersKeys = [];
-    this.createDropdownLists();
     this.onJudgeChange = this.onJudgeChange.bind(this);
     this.onAuthChange = this.onAuthChange.bind(this);
+
   }
 
   createDropdownLists() {
     for (var j in this.judges) {
       if(this.judges[j]['accepted_ratio: '] > 0 ){
         this.judgesKeys.push({label: j, value: j});
-      }
-    };
-    for (var a in this.lawyers) {
-      if(this.lawyers[a]['accepted_ratio: '] > 0) {
-        this.lawyersKeys.push({label: a, value: a});
       }
     };
   }
@@ -63,6 +67,58 @@ class App extends Component {
     }
   }
 
+  parseGlobal(data) {
+    let globalRatios = data.split('\n')
+    globalRatios = {
+      accpeted: globalRatios[0].split(' ')[1],
+      rejected: globalRatios[1].split(' ')[1],
+    }
+    this.setState({globalRatios})
+  }
+
+  parseText(data) {
+    let text = data.split('\n');
+
+    let lastJudge = ''
+    let isAcceptedRatio = true;
+    let lastAccepted;
+    let line;
+    for(let x = 0; x < text.length ; x++) {
+      line = text[x];
+      if(line.match(/(https?:\/\/[^\s]+)/g)) {
+        const link = line.split(' ');
+        this.judges[lastJudge].links.push(link);
+      } else if(line.match(/^[01]/)) {
+        if(!isAcceptedRatio) {
+          this.judges[lastJudge] = {
+            'accepted_ratio: ': lastAccepted,
+            'rejected_ratio: ': line,
+            'links': []
+          }
+        } else{
+          lastAccepted = line;
+        }
+        isAcceptedRatio = !isAcceptedRatio;
+      } else {
+        lastJudge = line;
+      }      
+    };
+    this.judgesArr = Object.entries(this.judges).filter(a => a[1]['links'].length > 10).sort((a,b) => a[1]['accepted_ratio: ']  > b[1]['accepted_ratio: '] ? 1 : -1).slice(-10).map(this.mapToTable);
+    this.createDropdownLists()
+    this.setState({dataLoaded: true})
+  }
+
+  returnAvg() {
+    const total = Number(this.state.globalRatios.accpeted) + Number(this.state.globalRatios.rejected)
+    const accepted_ratio = Number(this.state.globalRatios.accpeted)/total;
+    const rejected_ratio = Number(this.state.globalRatios.rejected)/total;
+    return (<div>
+      <div style={{direction: 'rtl'}}>{'ממוצע קבלה ודחייה אצל שופטים:'}</div>
+      <div>{`אחוז קבלה: ${accepted_ratio * 100}`}</div>
+      <div>{`אחוז דחייה: ${rejected_ratio * 100}`}</div>
+    </div>)
+  }
+
 
   render() {
     const visProps = {
@@ -79,12 +135,13 @@ class App extends Component {
         <header className="App-header">
           ניתוח פסקי דין
         </header>
-        <div className="avg-section">
 
-        </div>
         <div className="pick-section">
-          <Dropdown value={this.state.judge} options={this.judgesKeys} onChange={this.onJudgeChange}  style={{width:'300px', left: '-40px', direction: 'rtl'}} placeholder={"בחר שופט"} filter={true} showClear={true}/>
-          <Dropdown value={this.state.lawyer} options={this.lawyersKeys} onChange={this.onAuthChange}  style={{width:'300px', left: '40px'}} placeholder={"בחר עו״ד"} filter={true} showClear={true}/>
+          <Dropdown value={this.state.judge} options={this.judgesKeys} onChange={this.onJudgeChange}  style={{width:'300px', direction: 'rtl'}} placeholder={"בחר שופט"} filter={true} showClear={true}/>
+        </div>
+
+        <div className="avg-section">
+          {this.state.globalRatios ? this.returnAvg() : ''}
         </div>
 
         <div className="visualization-section" style={{width: '1000px', left: 'calc(50% - 500px)'}}>

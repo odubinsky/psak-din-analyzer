@@ -5,28 +5,32 @@ import {Chart} from 'primereact/chart';
 
 
 class Visualization extends Component {
-  isEmpty(chosenJudge, chosenLawyer, tab) {
+  constructor(props){
+    super(props)
+    this.linkTemplate = this.linkTemplate.bind(this);
+  }
+
+  isEmpty(chosenJudge, tab) {
     if(chosenJudge && chosenJudge.label !== 'כלום' ) {
-      return false;
-    }
-    if(chosenLawyer && chosenLawyer.label !== 'כלום' ) {
-      return false;
-    }
-    if(tab === 'שופטים מומלצים' || tab === 'עו״ד מומלצים'){
       return false;
     }
     return true;
   }
+
+  linkTemplate (rowData, column) {
+    const link = rowData.link;
+    return <a  rel="noopener noreferrer" href={link} target='_blank'>קישור</a>
+  }
   
 
   render() {
-    const {judges, lawyers, chosenJudge, chosenLawyer, judgesArr, lawyersArr, tab} = this.props
-    if(this.isEmpty(chosenJudge, chosenLawyer, tab)) {
+    const {judges, chosenJudge, judgesArr, tab} = this.props
+    if(this.isEmpty(chosenJudge, tab)) {
       return null;
     }
     if(tab === 'עמודות') {
       const chosenJudgeRatios = judges[`${chosenJudge}`]
-      const chosenLawyerRatios = lawyers[`${chosenLawyer}`]
+      // const chosenLawyerRatios = lawyers[`${chosenLawyer}`]
       const chartObj = {
         labels: [],
         datasets: [{
@@ -44,17 +48,11 @@ class Visualization extends Component {
         chartObj.datasets[0].data.push(chosenJudgeRatios['accepted_ratio: '] * 100);
         chartObj.datasets[1].data.push(chosenJudgeRatios['rejected_ratio: '] * 100);
       }
-      if (chosenLawyerRatios) {
-        chartObj.labels.push(`${chosenLawyer}`)
-        chartObj.datasets[0].data.push(chosenLawyerRatios['accepted_ratio: '] * 100);
-        chartObj.datasets[1].data.push(chosenLawyerRatios['rejected_ratio: '] * 100);
-      }
       return <Chart type="bar" data={chartObj} style={{width: '600px', left: 'calc(50% - 300px)', top: '20px'}} />
     }
     if(tab === 'עיגול'){
       const chosenJudgeRatios = judges[`${chosenJudge}`]
-      const chosenLawyerRatios = lawyers[`${chosenLawyer}`]
-      let chartObjJudge, chartObjAuth;
+      let chartObjJudge;
       chartObjJudge = {
         labels: ['אחוזי קבלה','אחוזי דחייה','אחר'],
         datasets: [{
@@ -62,44 +60,40 @@ class Visualization extends Component {
           data: []
         }]
       }
-      chartObjAuth  = {
-        labels: ['אחוזי קבלה','אחוזי דחייה','אחר'],
-        datasets: [{
-          backgroundColor: ['#42A5F5','#9CCC65','red'],
-          data: []
-        }]
-      }
+      
       if(chosenJudgeRatios) {
         let ratio = [chosenJudgeRatios['accepted_ratio: '] * 100, chosenJudgeRatios['rejected_ratio: '] * 100]
         chartObjJudge.datasets[0].data.push(ratio[0]);
         chartObjJudge.datasets[0].data.push(ratio[1]);
         chartObjJudge.datasets[0].data.push(100 - ratio[0] - ratio[1]);
       }
-      if (chosenLawyerRatios) {
-        let ratio = [chosenLawyerRatios['accepted_ratio: '] * 100, chosenLawyerRatios['rejected_ratio: '] * 100]
-        chartObjAuth.datasets[0].data.push(ratio[0]);
-        chartObjAuth.datasets[0].data.push(ratio[1]);
-        chartObjAuth.datasets[0].data.push(100 - ratio[0] - ratio[1]);
-      }
+     
       return (
       <div style={{top: '40px', position: 'relative'}}>
-        <Chart type="doughnut" data={chartObjJudge} style={{width: '50%', position: 'absolute'}} />
-        <Chart type="doughnut" data={chartObjAuth} style={{width: '50%', left: '50%', position: 'absolute'}} />
+        <Chart type="doughnut" data={chartObjJudge} style={{width: '50%', left: 'calc(50% - 250px)', marginBottom: '20px'}} />
       </div>)
     }
-    if(tab ===  'עו״ד מומלצים') {
-      return (<DataTable value={lawyersArr}>
-        <Column field="rejected_ratio" header="אחוז דחייה" />
-        <Column field="accepted_ratio" header="אחוז קבלה" />
-        <Column field="name" header="שם" />
-      </DataTable>)
-    }
     if(tab ===  'שופטים מומלצים') {
-      return (<DataTable value={judgesArr}>
-        <Column field="rejected_ratio" header="אחוז דחייה" />
-        <Column field="accepted_ratio" header="אחוז קבלה" />
+      return (<DataTable value={judgesArr} header={'שופטים שמקבלים את התביעה'}>
+        <Column field="rejected_ratio" header="אחוז דחייה" sortable={true}/>
+        <Column field="accepted_ratio" header="אחוז קבלה" sortable={true}/>
         <Column field="name" header="שם" />
       </DataTable>)
+    } 
+    if (tab === 'פסקי דין') {
+      let linksArr = judges[`${chosenJudge}`].links;
+      linksArr = linksArr.map(entry => {
+        entry = entry[0].split('\t')
+        return {
+          link: entry[0],
+          result: entry[1] ? 'התקבל' : 'נדחה'
+        }
+      });
+      return (<DataTable value={linksArr} style={{marginBottom: '30px'}}>
+        <Column field="link" header="קישור" body={this.linkTemplate}/>
+        <Column field="result" header="תוצאה" />
+      </DataTable>)
+
     }
     return null;
   }

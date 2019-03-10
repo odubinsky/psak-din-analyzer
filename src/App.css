@@ -2,6 +2,8 @@
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
+  height: 100%;
+  overflow-y: scroll
 }
 
 .App-logo {
@@ -12,7 +14,7 @@
 
 .App-header {
   top: 60px;
-  position: absolute;
+  position: relative;
   width: 100%;
   /* display: flex;
   flex-direction: column;
@@ -24,14 +26,23 @@
   font-family: 'Suez One', serif;
 }
 
+.avg-section{
+  top: 130px;
+  position: relative;
+  width: 100%;
+  font-size: 15px;
+  color: white;
+  font-family: 'Suez One', serif;
+}
+
 .pick-section{
   position: relative;
-  top: 175px;
+  top: 100px;
 }
 
 .visualization-section{
   position: relative;
-  top: 250px;
+  top: 180px;
 }
 
 .p-dropdown-label, .p-dropdown-items{
