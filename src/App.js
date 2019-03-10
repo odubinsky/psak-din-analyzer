@@ -103,7 +103,7 @@ class App extends Component {
         lastJudge = line;
       }      
     };
-    this.judgesArr = Object.entries(this.judges).filter(a => a[1]['links'].length > 10).sort((a,b) => a[1]['accepted_ratio: ']  > b[1]['accepted_ratio: '] ? 1 : -1).slice(-10).map(this.mapToTable);
+    this.judgesArr = Object.entries(this.judges).filter(a => a[1]['links'].length > 10).sort((a,b) => Number(a[1]['accepted_ratio: '])  > Number(b[1]['accepted_ratio: ']) ? 1 : -1).slice(-10).map(this.mapToTable);
     this.createDropdownLists()
     this.setState({dataLoaded: true})
   }
